@@ -1,0 +1,24 @@
+DECLARE
+--Declare variables to store employee information
+v_employee_name employees.employee_name%TYPE;
+v_employee_job employees.job%TYPE;
+
+--Declare the cursor
+CURSOR manager_cursor IS
+SELECT employee_name,job
+FROM employees
+WHERE job ='Manager';
+BEGIN
+--Open the cursor
+OPEN manager_cursor;
+--Fetch and print the information for each manager
+LOOP
+FETCH manager_cursor INTO v_employee_name,v_employee_job;
+EXIT WHEN manager_cursor%NOTFOUND;
+--Print the employee details
+DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_employee_name || ',Job:' || v_employee_job);
+END LOOP;
+--Close the cursor
+CLOSE manager_cursor;
+END;
+/ 
