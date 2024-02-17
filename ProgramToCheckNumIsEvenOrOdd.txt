@@ -1,0 +1,11 @@
+DECLARE
+n NUMBER := 1634; 
+ r NUMBER; 
+BEGIN
+r := MOD(n, 14); 
+ IF r = 0 THEN
+dbms_output.Put_line('Even'); 
+ ELSE
+  dbms_output.Put_line('Odd'); 
+  END IF; 
+END; 
